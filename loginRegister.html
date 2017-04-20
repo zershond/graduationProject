@@ -15,11 +15,11 @@
 	<body ng-app="loginApp" ng-controller="loginController">
 		<div id="zer-header">
 			<div class="bar bar-header light-bg">
-				<button class="button icon ion-ios-home light-bg"></button>
+				<a href="index.html"><button class="button icon ion-ios-home light-bg"></button></a>
 				<h1 class="title">Zershond</h1>
 			</div>
 		</div>
-		<div class="login-container">
+		<div class="login-container" ng-hide="showRegister">
 			<div id="header" class="header">
 				登 录
 			</div>
@@ -56,8 +56,110 @@
 				</div>
 			</div>
 		</div>
-		<!---->
+		
+		<!--错误信息-->
 		<div id="err-msg" class="err-msg" ng-class="errMsgAction ? '' : 'err-msg-action'" ng-show="showErrMsg"  ng-bind="errMsg"></div>
+		
+		<div class="switch-button">
+			<div class="switch" ng-bind="switchText"></div>
+		</div>
+		
+		<div id="register-container" class="login-container" ng-if="showRegister">
+			<div id="header" class="header">
+				注 册
+			</div>
+			
+			<div id="register-info" class="login-info">
+				<div class="user-name-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-pwd" class="user-pwd">
+						<div class="pwd-icon">
+							<i class="icon ion-android-lock"></i>
+						</div>
+						<div id="" class="pwd-input">
+							<input type="password" ng-model="userPassword" name="userPwd" id="userPwd" value="" placeholder="请输入密码" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="login-submit">
+				<div class="login-button" ng-click="login()"> 
+					<div class="buttom">
+						注 册
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
 

@@ -4,7 +4,8 @@
 	top: 44px;
 	bottom: 0;
 	width: 100%;
-	
+	overflow: scroll;
+    padding-bottom: 30px;
 }
 .login-container .header{
 	width: 100%;
@@ -16,7 +17,7 @@
 	color: #333;
 }
 .login-container .login-info{
-	margin-top: 20px;
+	margin-top: 0px;
 }
 .login-container .login-info .user-name-container{
 	border-bottom: 1px solid #ccc;
@@ -104,4 +105,12 @@
 
 .err-msg-action{
 	height: 0;
+}
+
+
+.switch-button{
+	position: fixed;
+	top: 55px;
+	right: 15px;
+	z-index: 100;
 }

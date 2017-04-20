@@ -5,6 +5,8 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 	$scope.errMsg = "errMsg";
 	$scope.showErrMsg = false;
 	$scope.errMsgAction = true;
+	$scope.switchText = "登陆";
+	$scope.showRegister = true;
 	
 	$scope.login = function(){
 		if($scope.userAccount == ""){
