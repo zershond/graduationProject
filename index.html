@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Listen Index Page</title>
+		<link rel="stylesheet" type="text/css" href="pluginLib/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="pluginLib/ionic/css/ionic.min.css" />
+		<link rel="stylesheet" type="text/css" href="scss/css/index.css" />
+
+		<script src="pluginLib/ionic/js/ionic.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/global.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="listenApp" ng-controller="listenController">
+
+		<ion-side-menus  delegate-handle="leftMenu">
+			<!-- 中间内容 -->
+			<ion-side-menu-content>
+				<!--header-->
+				<div id="zer-header">
+					<div class="bar bar-header light-bg">
+						<h1 class="title">Zershond</h1>
+					</div>
+				</div>
+
+				<!--navigator-->
+				<div id="zer-nav">
+					<div class="row stable-bg">
+						<div ng-class="navSelected[0] == 1 ?  'col nav-item zer-dark-border' : 'col nav-item'" ng-click="navClick(0)">有趣</div>
+						<div ng-class="navSelected[1] == 1 ?  'col nav-item zer-dark-border' : 'col nav-item'" ng-click="navClick(1)">天气</div>
+						<div ng-class="navSelected[2] == 1 ?  'col nav-item zer-dark-border' : 'col nav-item'" ng-click="navClick(2)">用户</div>
+					</div>
+				</div>
+
+				<!--main body-->
+				<div>
+					<ion-slide-box id="zer-mainBody" delegate-handle="mainSlide" class="light-bg" show-pager='false' on-slide-changed='sliceChange()'>
+						
+						<!--趣图-->
+						<ion-slide>
+							<ion-content>
+								<div class="news-container">
+									<div class="list">
+										<div class="box yellow" ng-show="page1loading">
+											<h1>有趣</h1>
+											<p>数据来自百思不得姐</p>
+										</div>
+										<a class="item item-thumbnail-left" ng-click="clickItem(item)" ng-repeat="item in items">
+											<img ng-src="{{item.profile_image}}">
+											<h2 ng-bind="item.name">this is left</h2>
+											<p ng-bind="item.text">Nine Inch Nails</p>
+										</a>
+									</div>
+								</div>
+								<ion-infinite-scroll on-infinite="loadMore()" ng-if="moreDataCanBeLoaded()" distance="10%" icon="ion-loading-d" class="loadMore"></ion-infinite-scroll>
+							</ion-content>
+							<div class="box yellow" ng-hide="loading">
+								<h1>趣图</h1>
+								<p>数据来自百思不得姐</p>
+							</div>
+						</ion-slide>
+					
+						<!--段子-->
+						<ion-slide>
+							<ion-content>
+								<div class="news-container">
+									
+								</div>
+							</ion-content>
+						</ion-slide>
+					
+					</ion-slide-box>
+				</div>
+
+				<!--footer-->
+
+			</ion-side-menu-content>
+
+			<!-- 左侧菜单 -->
+			<ion-side-menu side="left" class="calm-bg">
+				<div class="list">
+					
+					<div class="user-container">
+						<div class="user-img">
+							<!--<img src="img/icon.jpg"/>-->
+						</div>
+						<div class="user-name">
+							Zershond
+						</div>
+						<div class="user-text">
+							When you try your best but you don't succeed.
+						</div>
+					</div>
+					
+					<a class="item item-icon-left calm-bg zer-list-item" href="#">
+						<i class="icon ion-email"></i> Check mail
+					</a>
+
+					<a class="item item-icon-left item-icon-right calm-bg zer-list-item" href="#">
+						<i class="icon ion-chatbubble-working"></i> Call Ma
+						<i class="icon ion-ios-telephone-outline"></i>
+					</a>
+
+					<a class="item item-icon-left calm-bg zer-list-item" href="#">
+						<i class="icon ion-images"></i> Album
+					</a>
+
+				</div>
+			</ion-side-menu>
+
+		</ion-side-menus>
+
+		<div id="detail-container" class="calm-bg" ng-show="detail.showDetail">
+			<div id="zer-header">
+				<div class="bar bar-header positive-bg header">
+					<button class="button icon ion-close-circled calm-bg" ng-click="closeDetail()"></button>
+					<h2 class="title" ng-bind="word[index]">趣图</h2>
+				</div>
+			</div>
+			<div class="detail-author">
+				<div class="detail-author-container">
+					<img ng-src="{{detail.data.profile_image}}" alt="" />
+					<div class="author-name" ng-bind="detail.data.name"></div>
+				</div>
+			</div>
+			<div class="detail-container">
+				<p class="detail-text" ng-bind="detail.data.text">Listen</p>
+				<img ng-src="{{detail.data.image0}}" ng-show="navSelected[0]" alt="" />
+				
+				<div class="sound-container" ng-show="navSelected[2]">
+					<img ng-src="{{detail.data.image3}}" alt="" />
+					<audio id="sound" ng-src="{{detail.data.voice_uri | trusted}}" style="width: 100%;" class="calm-bg" ng-show="navSelected[2]"></audio>
+					<div class="play-btn">
+						<button ng-class="isPlay ? 'button icon ion-pause calm-bg playBtn' : 'button icon ion-play calm-bg playBtn'" ng-click="soundPlay()"></button>
+					</div>
+				</div>
+				<div class="sound-container" ng-show="navSelected[3]">
+					<video id="video" width="100%" ng-src="{{detail.data.video_uri | trusted}}" ng-show="navSelected[3]" ng-click="videoPlay()" ></video>
+					<div class="play-btn">
+						<button ng-class="isVideoPlay ? 'button icon ion-pause calm-bg playBtn' : 'button icon ion-play calm-bg playBtn'" ng-hide="isVideoPlay"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="zer-loading" ng-show="httpLoading">
+			<div class="loading-icon">
+				<i class="fa fa-spinner fa-pulse fa-3x"></i>
+			</div>
+		</div>
+	</body>
+
+</html>

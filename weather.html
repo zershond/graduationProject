@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="pluginLib/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="pluginLib/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="pluginLib/ionic/css/ionic.min.css" />
+		<link rel="stylesheet" type="text/css" href="scss/css/weather.css"/>
+		<link rel="stylesheet" type="text/css" href="scss/css/index.css"/>
+		<script src="pluginLib/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--header-->
+		<div id="zer-header">
+			<div class="bar bar-header positive-bg">
+				<button class="button icon ion-android-person calm-bg" ng-click="toggleLeft()"></button>
+				<h1 class="title">Zershond</h1>
+				<button class="button icon ion-arrow-return-left calm-bg" ng-click="pageRefresh()"></button>
+			</div>
+		</div>
+		
+		<div id="container">
+			<div class="todaycon">
+				<div class="today">
+					<div class="weatherImg">
+						<img src="img/1.png"/>
+						<div class="city">广州</div>
+						<div class="weatherInfo">
+							<div class="status">晴</div>
+							<div class="date">26日星期三</div>
+							<div class="wind">微风级</div>
+							<div class="temperature"><span id="low">25</span> - <span id="high">32</span>℃</div>
+						</div>
+					</div>
+					<div class="msg">
+						各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="otherday">
+				<div class="weather">
+					<div class="weaterImg2 col-xs-4">
+						<img src="img/1.png"/>
+					</div>
+					<div class="weatherInfo2 col-xs-8">
+						<div class="status">晴</div>
+						<div class="date">26日星期三</div>
+						<div class="wind">微风级</div>
+						<div class="temperature"><span id="low">25</span> - <span id="high">32</span>℃</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

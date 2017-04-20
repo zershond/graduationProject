@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="pluginLib/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="pluginLib/ionic/css/ionic.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		
+		<script src="pluginLib/ionic/js/ionic.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/global.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="loginApp" ng-controller="loginController">
+		<div id="zer-header">
+			<div class="bar bar-header light-bg">
+				<button class="button icon ion-ios-home light-bg"></button>
+				<h1 class="title">Zershond</h1>
+			</div>
+		</div>
+		<div class="login-container">
+			<div id="header" class="header">
+				登 录
+			</div>
+			
+			<div id="login-info" class="login-info">
+				<div class="user-name-container">
+					<div id="user-name" class="user-name">
+						<div class="name-icon">
+							<i class="icon ion-android-person"></i>
+						</div>
+						<div id="" class="name-input">
+							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+						</div>
+						
+					</div>
+				</div>
+				<div class="user-pwd-container">
+					<div id="user-pwd" class="user-pwd">
+						<div class="pwd-icon">
+							<i class="icon ion-android-lock"></i>
+						</div>
+						<div id="" class="pwd-input">
+							<input type="password" ng-model="userPassword" name="userPwd" id="userPwd" value="" placeholder="请输入密码" />
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="login-submit">
+				<div class="login-button" ng-click="login()"> 
+					<div class="buttom">
+						登 录
+					</div>
+				</div>
+			</div>
+		</div>
+		<!---->
+		<div id="err-msg" class="err-msg" ng-class="errMsgAction ? '' : 'err-msg-action'" ng-show="showErrMsg"  ng-bind="errMsg"></div>
+	</body>
+</html>
+
