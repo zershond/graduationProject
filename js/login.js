@@ -1,4 +1,4 @@
-var loginNg = angular.module('loginApp', []);console.log(loginNg)
+var loginNg = angular.module('loginApp', []);
 loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($scope, $http, $timeout){
 	$scope.userAccount = "";
 	$scope.userPassword = "";
@@ -6,7 +6,20 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 	$scope.showErrMsg = false;
 	$scope.errMsgAction = true;
 	$scope.switchText = "登陆";
-	$scope.showRegister = true;
+	$scope.showRegister = false;
+	$scope.loginContainerC = "";
+	$scope.registerContainerC = "";
+	
+	$scope.userInfo = {
+		userAccount: "",
+		userPassword: "",
+		userName: "",
+		mailBox: "",
+		phoneNum: "",
+		age: "",
+		userSign: "",
+		sex: ""
+	};
 	
 	$scope.login = function(){
 		if($scope.userAccount == ""){
@@ -30,7 +43,6 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 				}
 			})
 		}
-		
 	}
 	$scope.errAction = function(){
 		$timeout(function(){
@@ -41,5 +53,39 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 			$scope.errMsg = "";
 			$scope.showErrMsg = false;
 		}, 2000)
+	}
+	
+	$scope.showRegisterFn = function(){
+		$("#login-container").animate({
+			left: "-500px",
+			opacity: 0
+		},function(){
+			$(this).css("left", "500px")
+		})
+		$("#register-container").animate({
+			left: "0px",
+			opacity: 1
+		})
+	}
+	
+	$scope.showLoginFn = function(){
+		$("#register-container").animate({
+			left: "-500px",
+			opacity: 0
+		},function(){
+			$(this).css("left", "500px")
+		})
+		$("#login-container").animate({
+			left: "0px",
+			opacity: 1
+		})
+	}
+	
+	$scope.registe = function(){
+		console.log(this)
+	}
+	
+	$scope.checkAccount = function(){
+		
 	}
 }])

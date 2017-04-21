@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/login.css"/>
 		
 		<script src="pluginLib/ionic/js/ionic.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="pluginLib/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/global.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -19,7 +20,11 @@
 				<h1 class="title">Zershond</h1>
 			</div>
 		</div>
-		<div class="login-container" ng-hide="showRegister">
+		<div id="login-container" class="login-container" ng-hide="showRegister" ng-class="loginContainerC">
+			<div class="switch-button" ng-click="showRegisterFn()">
+				<div class="switch" >注册</div>
+			</div>
+			
 			<div id="header" class="header">
 				登 录
 			</div>
@@ -60,11 +65,12 @@
 		<!--错误信息-->
 		<div id="err-msg" class="err-msg" ng-class="errMsgAction ? '' : 'err-msg-action'" ng-show="showErrMsg"  ng-bind="errMsg"></div>
 		
-		<div class="switch-button">
-			<div class="switch" ng-bind="switchText"></div>
-		</div>
 		
-		<div id="register-container" class="login-container" ng-if="showRegister">
+		<!--ng-show="showRegister"-->
+		<div id="register-container" class="login-container"  ng-class="registerContainerC">
+			<div class="switch-button" ng-click="showLoginFn()">
+				<div class="switch">登录</div>
+			</div>
 			<div id="header" class="header">
 				注 册
 			</div>
@@ -76,17 +82,17 @@
 							<i class="icon ion-android-person"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-blur="checkAccount()" ng-model="userInfo.userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-pwd" class="user-pwd">
 						<div class="pwd-icon">
-							<i class="icon ion-android-lock"></i>
+							<i class="icon ion-ios-locked-outline"></i>
 						</div>
 						<div id="" class="pwd-input">
-							<input type="password" ng-model="userPassword" name="userPwd" id="userPwd" value="" placeholder="请输入密码" />
+							<input type="password" ng-model="userInfo.userPassword" name="userPwd" id="userPwd" value="" placeholder="请输入密码" />
 						</div>
 					</div>
 				</div>
@@ -96,64 +102,67 @@
 							<i class="icon ion-person"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-model="userInfo.userName" name="userName" id="userName" value="" placeholder="请输入昵称" />
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-name" class="user-name">
 						<div class="name-icon">
-							<i class="icon ion-android-person"></i>
+							<i class="icon ion-male"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<div class="sex-radio">
+								<input type="radio" name="sex" />男
+								<input type="radio" name="sex" />女
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-name" class="user-name">
 						<div class="name-icon">
-							<i class="icon ion-android-person"></i>
+							<i class="icon ion-ios-email-outline"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-model="userInfo.mailBox" name="userName" id="userName" value="" placeholder="请输入邮箱" />
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-name" class="user-name">
 						<div class="name-icon">
-							<i class="icon ion-android-person"></i>
+							<i class="icon ion-ios-telephone-outline"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-model="userInfo.phoneNum" name="userName" id="userName" value="" placeholder="请输入手机号" />
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-name" class="user-name">
 						<div class="name-icon">
-							<i class="icon ion-android-person"></i>
+							<i class="icon ion-ios-glasses-outline"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-model="userInfo.age" name="userName" id="userName" value="" placeholder="请输入年龄" />
 						</div>
 					</div>
 				</div>
 				<div class="user-pwd-container">
 					<div id="user-name" class="user-name">
 						<div class="name-icon">
-							<i class="icon ion-android-person"></i>
+							<i class="icon ion-compose"></i>
 						</div>
 						<div id="" class="name-input">
-							<input type="text" ng-model="userAccount" name="userName" id="userName" value="" placeholder="请输入账号" />
+							<input type="text" ng-model="userInfo.userSign" name="userName" id="userName" value="" placeholder="个人签名" />
 						</div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="login-submit">
-				<div class="login-button" ng-click="login()"> 
+				<div class="login-button" ng-click="registe()">
 					<div class="buttom">
 						注 册
 					</div>
