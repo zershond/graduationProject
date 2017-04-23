@@ -6,7 +6,7 @@
 }
 
 body {
-	background: deepskyblue;
+	/*background: deepskyblue;*/
 }
 
 a {
@@ -18,7 +18,7 @@ a {
 	width: 100%;
 	overflow: hidden;
 	padding: 10px;
-	margin-top: 43px;
+	margin-top: 40px;
 }
 
 .today {
@@ -26,6 +26,7 @@ a {
 	height: 220px;
 	border: 2px solid whitesmoke;
 	border-radius: 15px;
+	background: #efefef;
 }
 
 .today .weatherImg {
@@ -46,7 +47,7 @@ a {
 .weatherImg .city {
 	padding: 15px;
 	font-size: 22px;
-	color: white;
+	/*color: white;*/
 	font-weight: bold;
 }
 
@@ -63,12 +64,12 @@ a {
 	height: 25px;
 	line-height: 25px;
 	font-size: 14px;
-	color: white;
+	/*color: white;*/
 	padding-left: 40px;
 }
 
 .msg {
-	color: white;
+	/*color: white;*/
 	width: 100%;
 	height: 50px;
 	text-align: right;
@@ -77,13 +78,13 @@ a {
 }
 
 .otherday {
-	/*width: 100%;*/
-	overflow: auto;
+	width: 100%;
+	/*overflow: auto;
 	position: absolute;
 	top: 283px;
 	right: 10px;
 	bottom: 0px;
-	left: 10px;
+	left: 10px;*/
 }
 
 .otherday .weather {
@@ -91,9 +92,10 @@ a {
 	overflow: hidden;
 	height: 100px;
 	border: 1px solid #FFF;
-	color: white;
+	/*color: white;*/
 	margin-bottom: 20px;
 	border-radius: 15px;
+	background: #EFEFEF;
 }
 
 .weaterImg2 {
@@ -122,5 +124,15 @@ a {
 	font-size: 14px;
 }
 .button {
-    color: white !important;
+    /*color: white !important;*/
+}
+
+.col-xs-4{
+	width: 33%;
+	float: left;
+	
+}
+.col-xs-8{
+	width: 67%;
+	float: left;
 }

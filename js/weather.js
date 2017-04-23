@@ -6,11 +6,9 @@ $(function(){
 	var str = window.location.href;
 	str = str.split('?')[1];
 	var city = str.split('=')[1];
-//				console.log(decodeURI(city));
 	
 	$.get('http://wthrcdn.etouch.cn/weather_mini?city=' + city, function(data){
 		data = JSON.parse(data);
-//					console.log(data);
 		$.each(data.data.forecast, function(index, array) {
 			if(index == 0){
 				setInfo(array, oToday);

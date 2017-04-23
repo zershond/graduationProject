@@ -192,7 +192,6 @@
 .user-container {
 	width: 100%;
 	height: 200px;
-	color: white;
 }
 
 .user-container .user-img {
@@ -225,7 +224,7 @@
 }
 
 .zer-list-item {
-	color: white !important;
+	/*color: white !important;*/
 }
 
 

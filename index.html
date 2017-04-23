@@ -7,9 +7,11 @@
 		<title>Listen Index Page</title>
 		<link rel="stylesheet" type="text/css" href="pluginLib/font-awesome/css/font-awesome.min.css"/>
 		<link rel="stylesheet" type="text/css" href="pluginLib/ionic/css/ionic.min.css" />
-		<link rel="stylesheet" type="text/css" href="scss/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/weatherSearch.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 
 		<script src="pluginLib/ionic/js/ionic.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="pluginLib/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/global.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -45,8 +47,8 @@
 								<div class="news-container">
 									<div class="list">
 										<div class="box yellow" ng-show="page1loading">
-											<h1>有趣</h1>
-											<p>数据来自百思不得姐</p>
+											<!--<h1>有趣</h1>
+											<p>数据来自百思不得姐</p>-->
 										</div>
 										<a class="item item-thumbnail-left" ng-click="clickItem(item)" ng-repeat="item in items">
 											<img ng-src="{{item.profile_image}}">
@@ -67,7 +69,50 @@
 						<ion-slide>
 							<ion-content>
 								<div class="news-container">
-									
+									<div id="container" city="">
+										<header>
+											<p>天气预报</p>
+											<input type="text" id="cityName" ng-model="city" value="广州" />
+											<input type="button" id="search" value="查看" ng-click="getWeather()" />
+											<div class="msg">请输入你要查看的城市</div>
+										</header>
+									</div>
+								</div>	
+							</ion-content>
+						</ion-slide>
+						
+						<!--用户信息-->
+						<ion-slide>
+							<ion-content>
+								<div class="news-container" >
+									<div class="list">
+										<div class="user-container">
+											<div class="user-img">
+												<!-- ng-bind="userData.sign"<img ng-src="userData.icon"/> ng-bind="userData.name"-->
+												<img src="img/icon.jpg"/>
+											</div>
+											<div class="user-name">
+												Zershond
+											</div>
+											<div class="user-text">
+												When you try your best but you don't succeed.
+											</div>
+										</div>
+										<div id="" ng-if="showMoreInfo">
+											<a class="item item-icon-left zer-list-item" href="#">
+												<i class="icon ion-email"></i> Check mail
+											</a>
+						
+											<a class="item item-icon-left item-icon-right zer-list-item" href="#">
+												<i class="icon ion-chatbubble-working"></i> Call Ma
+												<i class="icon ion-ios-telephone-outline"></i>
+											</a>
+						
+											<a class="item item-icon-left zer-list-item" href="#">
+												<i class="icon ion-images"></i> Album
+											</a>
+										</div>
+									</div>
 								</div>
 							</ion-content>
 						</ion-slide>
@@ -81,34 +126,7 @@
 
 			<!-- 左侧菜单 -->
 			<ion-side-menu side="left" class="calm-bg">
-				<div class="list">
-					
-					<div class="user-container">
-						<div class="user-img">
-							<!--<img src="img/icon.jpg"/>-->
-						</div>
-						<div class="user-name">
-							Zershond
-						</div>
-						<div class="user-text">
-							When you try your best but you don't succeed.
-						</div>
-					</div>
-					
-					<a class="item item-icon-left calm-bg zer-list-item" href="#">
-						<i class="icon ion-email"></i> Check mail
-					</a>
-
-					<a class="item item-icon-left item-icon-right calm-bg zer-list-item" href="#">
-						<i class="icon ion-chatbubble-working"></i> Call Ma
-						<i class="icon ion-ios-telephone-outline"></i>
-					</a>
-
-					<a class="item item-icon-left calm-bg zer-list-item" href="#">
-						<i class="icon ion-images"></i> Album
-					</a>
-
-				</div>
+				
 			</ion-side-menu>
 
 		</ion-side-menus>

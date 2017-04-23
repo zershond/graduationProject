@@ -21,7 +21,7 @@ header {
 	right: 0px;
 	width: 100%;
 	overflow: hidden;
-	padding-top: 80px;
+	padding-top: 50px;
 }
 
 header p {
@@ -40,6 +40,7 @@ header p {
 	outline: medium;
 	border: none;
 	padding-left: 10px;
+	background-color: #EFEFEF;
 }
 
 #search {
