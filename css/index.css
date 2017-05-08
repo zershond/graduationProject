@@ -191,7 +191,9 @@
 
 .user-container {
 	width: 100%;
-	height: 200px;
+	/*height: 200px;*/
+	/*height: 170px;*/
+    border-bottom: 1px solid #ccc;
 }
 
 .user-container .user-img {
@@ -225,6 +227,40 @@
 
 .zer-list-item {
 	/*color: white !important;*/
+}
+
+
+.login-container{
+	width: 100%;
+	padding-top: 30px;
+}
+.login-container .login-button{
+	width: 30%;
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid #CCCCCC;
+	font-size: 18px;
+	padding: 10px 0;
+	border-radius: 10px;
+}
+.login-container .register{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+.red-color{
+	background-color: orangered;
+	color: white;
+}
+
+.item-name{
+	font-weight: bold;
+}
+.item-name .item-val{
+	padding-top: 5px;
+	padding-left: 0px;
+    font-size: 13px;
+    font-weight: normal;
 }
 
 

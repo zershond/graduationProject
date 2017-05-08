@@ -8,8 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/global.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="css/weather.css"/>
-		<!--<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="pluginLib/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="pluginLib/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weather.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="zer-header">
@@ -22,19 +23,19 @@
 				<div class="today">
 					<div class="weatherImg">
 						<img src="img/1.png"/>
-						<div class="city" ng-bind="today.city">广州</div>
+						<div class="city" ng-bind="today.city"></div>
 						<div class="weatherInfo">
-							<div class="status" ng-bind="today.type">晴</div>
-							<div class="date" ng-bind="today.date">26日星期三</div>
-							<div class="wind" ng-bind="today.fengli">微风级</div>
+							<div class="status" ng-bind="today.type"></div>
+							<div class="date" ng-bind="today.date"></div>
+							<div class="wind" ng-bind="today.fengli"></div>
 							<div class="temperature">
-								<span id="low" ng-bind="today.low">25</span> - 
-								<span id="high" ng-bind="today.high">32</span>℃
+								<span id="low" ng-bind="today.low"></span> - 
+								<span id="high" ng-bind="today.high"></span>℃
 							</div>
 						</div>
 					</div>
 					<div class="msg" ng-bind="today.msg">
-						各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。
+						
 					</div>
 				</div>
 			</div>
@@ -46,21 +47,29 @@
 						<img src="img/1.png"/>
 					</div>
 					<div class="weatherInfo2 col-xs-8">
-						<div class="status">晴</div>
-						<div class="date">26日星期三</div>
-						<div class="wind">微风级</div>
-						<div class="temperature"><span id="low">25</span> - <span id="high">32</span>℃</div>
+						<div class="status"></div>
+						<div class="date"></div>
+						<div class="wind"></div>
+						<div class="temperature"><span id="low"></span> - <span id="high"></span>℃</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
 <script type="text/javascript">
-	mui.plusReady(function(){
+mui.init({
+	gestureConfig:{
+		tap: false, //默认为true
+		doubletap: false, //默认为false
+		longtap: false, //默认为false
+		swipe: false, //默认为true
+		drag: false, //默认为true
+		hold:false,//默认为false，不监听
+		release:false//默认为false，不监听
+	}
+});
+mui.plusReady(function(){
 	plus.key.addEventListener('backbutton',function(){
-//		if(confirm('确认退出？')){
-//			plus.runtime.quit();
-//		}
 		history.go(-1)
 	},false);	
 })

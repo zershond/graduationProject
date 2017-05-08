@@ -24,7 +24,6 @@ $(function(){
 })
 
 function setInfo(array, item){
-//				console.log(array);
 	$('img', item).prop('src', selectImg(array.type));
 	$('.status', item).html(array.type);
 	$('.date', item).html(array.date);

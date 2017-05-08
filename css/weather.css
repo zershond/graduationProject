@@ -7,6 +7,8 @@
 
 body {
 	/*background: deepskyblue;*/
+	position: absolute;
+	overflow: auto;
 }
 
 a {
@@ -14,9 +16,14 @@ a {
 	color: inherit;
 }
 
+#zer-header{
+	background: #fff;
+    z-index: 100;
+}
+
 #container {
 	width: 100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	padding: 10px;
 	margin-top: 40px;
 }
@@ -79,6 +86,7 @@ a {
 
 .otherday {
 	width: 100%;
+	margin-top: 20px;
 	/*overflow: auto;
 	position: absolute;
 	top: 283px;

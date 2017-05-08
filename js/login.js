@@ -10,6 +10,7 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 	$scope.loginContainerC = "";
 	$scope.registerContainerC = "";
 	
+	$scope.userAccountAvailable = false;
 	$scope.userInfo = {
 		userAccount: "",
 		userPassword: "",
@@ -40,6 +41,9 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 					$scope.showErrMsg = true;
 					$scope.errMsg = res.massage;
 					$scope.errAction();
+				}else{
+					localStorage.userId = res.data.userId;
+					window.location.href = "index.html";
 				}
 			})
 		}
@@ -83,9 +87,61 @@ loginNg.controller("loginController", ['$scope', '$http', '$timeout', function($
 	
 	$scope.registe = function(){
 		console.log(this)
+		if($scope.userInfo.userAccount == ""){
+			$scope.showErrMsg = true;
+			$scope.errMsg = "请填写账号";
+			$scope.errAction();
+		}else if($scope.userInfo.userPassword == ""){
+			$scope.showErrMsg = true;
+			$scope.errMsg = "请填写密码";
+			$scope.errAction();
+		}else{
+			console.log($scope.userInfo)
+			var _url = "http://www.zershond.top:1200/users/addUser";
+			var obj = {
+					userName: $scope.userInfo.userName,
+					userAccount: $scope.userInfo.userName,
+					userSign: $scope.userInfo.userSign,
+					userPhoneNum: $scope.userInfo.phoneNum,
+					mailBox: $scope.userInfo.mailBox,
+					accountPassword: $scope.userInfo.userPassword,
+					sex: $scope.userInfo.sex,
+					age: $scope.userInfo.age
+				}
+//			$http.post(_url, obj).success(function(res){
+//				console.log(res)
+//			})
+			$.post(_url, obj, function(res){
+				console.log(res);
+				localStorage.userId = res.result.insertId;
+				window.location.href = "index.html";
+			})
+		}
+		
 	}
 	
 	$scope.checkAccount = function(){
-		
+		var _url = "http://www.zershond.top:1200/users/checkAccount?userAccount=" + $scope.userInfo.userAccount;
+		$http.get(_url).success(function(res){
+			if(res.code == 1){
+				$scope.userAccountAvailable = true;
+				$scope.showErrMsg = false;
+				$scope.errMsg = "";
+			}else{
+				$scope.userAccountAvailable = false;
+				$scope.showErrMsg = true;
+				$scope.errMsg = "账号已存在";
+				$scope.errAction();
+			}
+		})
+	}
+	
+	var str = window.location.href.split("?")[1].split("=")[1];
+	if(str == 1){
+		$scope.showRegisterFn();
 	}
 }])
+
+function registeRequest(obj){
+	
+}
